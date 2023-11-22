@@ -6,7 +6,7 @@ Fizz if something is only dividable by 3
 Buzz if something is only dividable by 5
 FizzBuzz if something is dividable by both.
 '''
-i = 0
+
 for i in range(101):
     print(i)
 

@@ -9,7 +9,6 @@ FizzBuzz if something is dividable by both.
 
 for i in range(101):
     print(i)
-
     if ((i%5==0)&(i%3==0)):
         print("FizzBuzz")        
     elif (i%3==0):

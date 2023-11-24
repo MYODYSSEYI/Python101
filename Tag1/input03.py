@@ -17,15 +17,21 @@ while True:
     # if statements
     if var_Rechnungsart == "+":
         var_ergebnis = var_a + var_b + var_c
+
     elif var_Rechnungsart == "-":
         var_ergebnis = var_a - var_b - var_c
+
     elif var_Rechnungsart == "*":
         var_ergebnis = var_a * var_b * var_c
+
     elif var_Rechnungsart == "/":
         var_ergebnis = var_a / var_b / var_c
+
     elif var_Rechnungsart == "**":
         var_ergebnis = var_a ** var_b
+
     elif var_Rechnungsart == "%":
         var_ergebnis = var_a % var_b
+        
         print(var_ergebnis)
         continue

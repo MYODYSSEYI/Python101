@@ -38,5 +38,6 @@ while True:
     elif var_Rechnungsart == "%": 
         var_ergebnis = var_a % var_b
         
+    
     print(var_ergebnis)
     break

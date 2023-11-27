@@ -23,6 +23,6 @@ while varStop <= "n":
         time.sleep(1) 
         varStop = "stop"
         os.system("cls" if os.name == "nt" else clear)
-        print(f"{0}:{0}:{0} \nFINISHED!")
+        print(f"{varHours}:{varMinutes}:{varSeconds} \nFINISHED!")
         exit()
 

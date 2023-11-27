@@ -24,5 +24,5 @@ while varStop <= "n":
         varStop = "stop"
         os.system("cls" if os.name == "nt" else clear)
         print(f"{varHours}:{varMinutes}:{varSeconds} \nFINISHED!")
-        exit()
+        break
 

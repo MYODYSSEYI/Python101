@@ -28,3 +28,6 @@ listTeilnehmer.sort(reverse=True)
 for z in listTeilnehmer:
     print(z)
 print("\n")
+
+print(len(listTeilnehmer))
+print("\n")

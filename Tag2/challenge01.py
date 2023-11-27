@@ -8,13 +8,13 @@ while True:
     varAlter = int(input("Wie alt bist du? \n"))
     if varAlter >= 40:
         varLT = input("Was ist dein Lieblingstier? \n")
-        print(f"Dein Name ist {varName} du bist {varAlter} Jahre alt und dein Lieblingstier ist {varLT}, ist das Korrekt?")
+        print(f"Dein Name ist {varName} du bist {varAlter} Jahre alt und dein Lieblingstier ist {varLT}, ist das korrekt?")
         varCorrect = input("[Y]|[N]\n")
     else:
         varLF = input("Was ist dein Lieblingsfilm? \n")
-        print(f"Dein Name ist {varName} du bist {varAlter} Jahre alt und dein Lieblingsfilm ist {varLF}, ist das Korrekt?")
+        print(f"Dein Name ist {varName} du bist {varAlter} Jahre alt und dein Lieblingsfilm ist {varLF}, ist das korrekt?")
         varCorrect = input("[Y]|[N]\n")
-    if varCorrect == "Y":
+    if varCorrect == "Y" or "y":
         print(f"Es war schön dich kennengelernt zu haben.\nMan sieht sich, ciao {varName}.")
         break
     else:

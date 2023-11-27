@@ -7,7 +7,7 @@ varMinutes = int(input("Minutes: "))
 varHours = int(input("Hours: "))
 
 
-while varStop <= "n":
+while varStop == "n":
     os.system("cls" if os.name == "nt" else clear)
     print(f"{varHours}:{varMinutes}:{varSeconds}")
     print("\n")

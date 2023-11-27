@@ -2,6 +2,7 @@ print("Bitte wählen Sie aus: \n [+] Addition \n [-] Subtraktion) \n [*] Multipl
 
 
 var_pruef_Rechnungsart = "nicht ok"
+var_pruef_Eingabe = "nicht ok"
 
 # Rechnungsart auswählen
 while var_pruef_Rechnungsart == "nicht ok":
@@ -13,18 +14,14 @@ while var_pruef_Rechnungsart == "nicht ok":
         var_pruef_Rechnungsart = "ok"
 
 # Werte eingeben
-try:
-    var_a = float(input("a="))
-except:
-    print("Die Eingabe muss eine Zahl sein \nBitte neu starten")
-    exit()
-try:
-    var_b = float(input("b="))
-except:
-    print("Die Eingabe muss eine Zahl sein \nBitte neu starten")
-    exit()
-    
-print()
+while var_pruef_Eingabe == "nicht ok":
+    try:
+        var_a = float(input("a="))
+        var_b = float(input("b="))
+        var_pruef_Eingabe = "ok"
+    except:
+        print("Die Eingabe muss eine Zahl sein \nBitte neu starten")
+        
 
 if var_Rechnungsart == "+":
     var_ergebnis = var_a + var_b

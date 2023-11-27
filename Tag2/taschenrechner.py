@@ -7,7 +7,7 @@ while True:
     if var_Rechnungsart == "x":
         print("Bye!")
         break
-    elif var_Rechnungsart not in ["+", "-", "*", "/", "**", "%"]:
+    elif var_Rechnungsart != ["+", "-", "*", "/", "**", "%"]:
         print("Try again!")
         continue
     

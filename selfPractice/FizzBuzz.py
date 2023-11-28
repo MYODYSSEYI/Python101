@@ -6,9 +6,9 @@ Fizz if something is only dividable by 3
 Buzz if something is only dividable by 5
 FizzBuzz if something is dividable by both.
 '''
-
+import time 
 for i in range(101):
-    print(i)
+    time.sleep(0.2)
     if ((i%5==0)&(i%3==0)):
         print("FizzBuzz")        
     elif (i%3==0):

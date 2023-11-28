@@ -1,5 +1,5 @@
 #1. Create a greeting for your program.
-print("Hello sucker!\n I heard u need a band name!?")
+print("Hello sucker!\nI heard u need a band name!?")
 #2. Ask the user for the city that they grew up in.
 cityGrow = input("What city did you grow up in?\n")
 #3. Ask the user for the name of a pet.

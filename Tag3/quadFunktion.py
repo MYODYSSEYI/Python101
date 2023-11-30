@@ -16,7 +16,7 @@ def f_Mantelfl(a, b, c):
 v_Auswahl = 0
 
 while v_Auswahl != " ":    
-    print("Was möchtest du berechnen?\n")
+    print("Was möchtest du berechnen?\nQuader:\n")
     v_Auswahl = input("Raumdiagonale     [e]\n" + "Umfang            [u]\n" + "Grundfläche       [G]\n" + "Mantelfläche      [M]\n" + "Abbrechen       [Leertaste]\n")
     if v_Auswahl == "e" or v_Auswahl == "E":
         a = float(input('Gib einen Wert für "a" an.\n'))

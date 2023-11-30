@@ -23,19 +23,39 @@ while v_Auswahl != " ":
         b = float(input('Gib einen Wert für "b" an.\n'))
         c = float(input('Gib einen Wert für "c" an.\n'))
         f_Raum(a, b, c)
+        vContinue = input("Noch eine Rechnung? [Y]|[N]")
+        if vContinue == "y" or vContinue == "Y":
+            continue
+        else:
+            break
     elif v_Auswahl == "u" or v_Auswahl == "U":
         a = float(input('Gib einen Wert für "a" an.\n'))
         b = float(input('Gib einen Wert für "b" an.\n'))
         f_Auswahl(a, b)
+        vContinue = input("Noch eine Rechnung? [Y]|[N]")
+        if vContinue == "y" or vContinue == "Y":
+            continue
+        else:
+            break
     elif v_Auswahl == "G" or v_Auswahl == "g":
         a = float(input('Gib einen Wert für "a" an.\n'))
         b = float(input('Gib einen Wert für "b" an.\n'))
         f_Grundfl(a, b)
+        vContinue = input("Noch eine Rechnung? [Y]|[N]")
+        if vContinue == "y" or vContinue == "Y":
+            continue
+        else:
+            break
     elif v_Auswahl == "M" or v_Auswahl == "m":
         a = float(input('Gib einen Wert für "a" an.\n'))
         b = float(input('Gib einen Wert für "b" an.\n'))
         c = float(input('Gib einen Wert für "c" an.\n'))
         f_Mantelfl(a, b, c)
+        vContinue = input("Noch eine Rechnung? [Y]|[N]")
+        if vContinue == "y" or vContinue == "Y":
+            continue
+        else:
+            break
     elif v_Auswahl == " ":
         print("Good bye!")
     else:

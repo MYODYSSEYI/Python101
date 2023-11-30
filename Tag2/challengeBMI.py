@@ -12,12 +12,17 @@ Sumo >= 35
 import math
 
 Gewicht = float(input("Dein Gewicht: "))
-Groesse = float(input("Dein Gewicht: "))**2
+Groesse = float(input("Deine Größe: "))**2
 
 BMI = Gewicht / Groesse
 
 if BMI < 18.5:
     print(f"Untergewicht: {BMI}")
-elif BMI == 18.5 <= 24.9:
+elif BMI >= 18.5 and BMI <= 24.9:
     print(f"Normalgewicht: {BMI}")  
-elif BMI == 25 <= 
+elif BMI >= 25 and BMI <= 29.9:
+    print(f"Übergewicht: {BMI}")  
+elif BMI >= 30 and BMI <= 34.9:
+    print(f"Adipositas: {BMI}")
+else:
+    print(f"Sumo: {BMI}")

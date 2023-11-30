@@ -36,26 +36,31 @@ def f_Mantelfl(a, b, c):
     Mantelfl = round(2*a*c+2*b*c)
     print(f"Mantelfläche:           {Mantelfl}\n")
 
-print("Was möchtest du berechnen?\n")
-v_Auswahl = input("Raumdiagonale     [e]\n" + "Umfang            [u]\n" + "Grundfläche       [G]\n" + "Mantelfläche      [M]\n")
+v_Auswahl = 0
 
-if v_Auswahl == "e" or v_Auswahl == "E":
-    a = float(input('Gib einen Wert für "a" an.\n'))
-    b = float(input('Gib einen Wert für "b" an.\n'))
-    c = float(input('Gib einen Wert für "c" an.\n'))
-    f_Raum(a, b, c)
-elif v_Auswahl == "u" or v_Auswahl == "U":
-    a = float(input('Gib einen Wert für "a" an.\n'))
-    b = float(input('Gib einen Wert für "b" an.\n'))
-    f_Auswahl(a, b)
-elif v_Auswahl == "G" or v_Auswahl == "g":
-    a = float(input('Gib einen Wert für "a" an.\n'))
-    b = float(input('Gib einen Wert für "b" an.\n'))
-    f_Grundfl(a, b)
-elif v_Auswahl == "M" or v_Auswahl == "m":
-    a = float(input('Gib einen Wert für "a" an.\n'))
-    b = float(input('Gib einen Wert für "b" an.\n'))
-    c = float(input('Gib einen Wert für "c" an.\n'))
-    f_Mantelfl(a, b, c)
-else:
-    pass 
+while v_Auswahl != " ":    
+    print("Was möchtest du berechnen?\n")
+    v_Auswahl = input("Raumdiagonale     [e]\n" + "Umfang            [u]\n" + "Grundfläche       [G]\n" + "Mantelfläche      [M]\n" + "Abbrechen       [Leertaste]\n")
+    if v_Auswahl == "e" or v_Auswahl == "E":
+        a = float(input('Gib einen Wert für "a" an.\n'))
+        b = float(input('Gib einen Wert für "b" an.\n'))
+        c = float(input('Gib einen Wert für "c" an.\n'))
+        f_Raum(a, b, c)
+    elif v_Auswahl == "u" or v_Auswahl == "U":
+        a = float(input('Gib einen Wert für "a" an.\n'))
+        b = float(input('Gib einen Wert für "b" an.\n'))
+        f_Auswahl(a, b)
+    elif v_Auswahl == "G" or v_Auswahl == "g":
+        a = float(input('Gib einen Wert für "a" an.\n'))
+        b = float(input('Gib einen Wert für "b" an.\n'))
+        f_Grundfl(a, b)
+    elif v_Auswahl == "M" or v_Auswahl == "m":
+        a = float(input('Gib einen Wert für "a" an.\n'))
+        b = float(input('Gib einen Wert für "b" an.\n'))
+        c = float(input('Gib einen Wert für "c" an.\n'))
+        f_Mantelfl(a, b, c)
+    elif v_Auswahl == " ":
+        print("Good bye!")
+    else:
+        print("Wrong choice!\n")
+        continue

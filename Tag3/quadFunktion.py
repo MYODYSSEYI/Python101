@@ -1,27 +1,4 @@
-'''
-Der Quader a, b, c input... alle formeln berechnen.
-
-a 
-b 
-Raumdiagonale e = 
-umfang u = 
-Grundfläche G = 
-Mantelfläche M = 
-c 
-Oberfläche O = 
-Volumen V = 
-Länge aller Seiten I = 
-Flächendiagonale d 
-Flächendiagonale dsc 
-Flächendiagonale d
-''' 
 import math
-
-'''
-a = float(input('Gib einen Wert für "a" an.\n'))
-b = float(input('Gib einen Wert für "b" an.\n'))
-c = float(input('Gib einen Wert für "c" an.\n'))
-'''
 
 def f_Raum(a, b, c):
     Raumdiagonale = round(math.sqrt(a**2+b**2+c**2))

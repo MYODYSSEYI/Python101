@@ -1,5 +1,4 @@
 import random 
-import time
 
 rock = '''
     _______
@@ -33,7 +32,7 @@ outcome = 'Ongoing'
 
 listRPS=[rock,paper,scissors]
 computerChoice = random.randint(0,2)
-playerChoice = int(input("Let's play a game of Rock, Paper, Scissors\nChoose wisely \n0 for Rock \n1 for Paper \n2 for Scissors \nYour battel beginns now!"))
+playerChoice = int(input("Let's play a game of Rock, Paper, Scissors\nChoose wisely \n0 for Rock \n1 for Paper \n2 for Scissors \nYour battel beginns now!\n"))
 
 print(f'The maschine chose...\n{listRPS[computerChoice]}')
 

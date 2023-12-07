@@ -13,7 +13,7 @@ while varStop <= "n":
     print("\n")
     varSeconds += 1
     time.sleep(1)
-    if varSeconds == 60: 
+    if varSeconds == 60:
         varSeconds = 0
         varMinutes += 1
     if varMinutes == 60:

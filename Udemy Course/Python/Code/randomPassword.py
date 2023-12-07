@@ -14,9 +14,9 @@ for char in range(1, nrLetters +1):
     passwordList.append(random.choice(letters))
 for nr in range(1, nrNumbers +1):
     passwordList.append(random.choice(numbers))
-for sym in range(1, nrSymbols +1): 
+for sym in range(1, nrSymbols +1):
     passwordList.append(random.choice(symbols))
-    
+
 random.shuffle(passwordList)
 
 password = ""

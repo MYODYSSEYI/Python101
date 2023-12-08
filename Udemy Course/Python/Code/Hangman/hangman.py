@@ -25,10 +25,11 @@ while True:
 
     rounds = 1
     print(f"{given}\n")
-    while display.count('_') != 0 and rounds != 7:
+    while display.count('_') != 0: #and rounds != 8:
 
         if rounds == 7:
             print(f'your word was... \n\n{chosen_word}\n')
+            break
         guess=input('\nchoose a letter: ').lower()
         os.system("cls" if os.name == "nt" else "clear")
         for i in range(word_len):
@@ -55,6 +56,7 @@ while True:
                 rounds += 1
                 if guess not in used_letters:
                     used_letters.append(guess)
+
             print(stages[len(stages)-rounds])
             for letter in used_letters:
                 display_used += letter

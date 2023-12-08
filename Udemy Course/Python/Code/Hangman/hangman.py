@@ -9,7 +9,7 @@ word_list = hangman_words.word_list
 chosen_word = random.choice(word_list)
 word_len=len(chosen_word)
 
-
+used_letters = []
 display=[]
 for i in range(word_len):
   display += '_'
@@ -24,8 +24,13 @@ time.sleep(1)
 
 rounds = 1
 print(f"{given}\n")
-while display.count('_') != 0 and rounds != 7:
+while display.count('_') != 0: #and rounds != 7:
+
+  if rounds == 7:
+    print(f'your word was... \n\n{chosen_word}')
+    break
   guess=input('\nchoose a letter: ').lower()
+  used_letters.append(guess)
   os.system("cls" if os.name == "nt" else "clear")
   for i in range(word_len):
     letter = chosen_word[i]
@@ -34,18 +39,27 @@ while display.count('_') != 0 and rounds != 7:
   answer = ''
   for letter in display:
     answer += letter + " "
+
+  display_used=''
 #
   if'_'not in display:
     print(stages[len(stages)-rounds])
+    for letter in used_letters:
+        display_used += letter
+    print(f'Used letter: {display_used}')
     print(f'\nThe word was: {answer}\nYou win!')
-
 # Adds one to rounds if guess is wrong
   elif display.count(guess) == 0:
     rounds += 1
     print(stages[len(stages)-rounds])
+    for letter in used_letters:
+        display_used += letter
+    print(f'Used letter: {display_used}')
     print(f"\n{answer}")
-
 # Displays stage of hangman and the letters u got so far
   else:
     print(stages[len(stages)-rounds])
+    for letter in used_letters:
+        display_used += letter
+    print(f'Used letter: {display_used}')
     print(f"\n{answer}")

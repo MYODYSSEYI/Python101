@@ -75,7 +75,7 @@ while True:
 
     play_again = input('Do you want to try another word?\n[Y]|[N]\n').upper()
     if play_again == 'Y':
-
+        os.system("cls" if os.name == "nt" else "clear")
         continue
     else:
         break

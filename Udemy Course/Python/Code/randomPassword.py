@@ -4,7 +4,7 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 print("THIS WILL BE THE LAST PASSWORD U WILL EVER NEED!")
-nrLetters = int(input("Select how many letters should be in ur masterfully crafed password?\n"))
+nrLetters = int(input("Select how many letters should be in ur masterfully crafted password?\n"))
 nrNumbers = int(input("How many numbers should be in that mighty password of yours?\n"))
 nrSymbols = int(input("And for the finishing touch might I ask you for the number of symbols you want in your tempel of security?\n"))
 
@@ -24,5 +24,5 @@ password = ""
 for i in passwordList:
     password += i
 
-print(password)
+print(f"Your password is \n{password}")
 

@@ -5,6 +5,7 @@ from hangmanAssets import logo, stages
 import hangman_words
 word_list = hangman_words.word_list
 
+os.system("cls" if os.name == "nt" else "clear")
 #TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
 while True:
     chosen_word = random.choice(word_list)

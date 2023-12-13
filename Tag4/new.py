@@ -1,5 +1,6 @@
 import turtle
 import random
+from tkinter import *
 
 # Set up the screen
 screen = turtle.Screen()

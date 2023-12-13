@@ -29,7 +29,7 @@ def main():
     start_time = pygame.time.get_ticks()
 
     # Positions
-    ball = pygame.Rect(width // 8 - ball_radius, height // 8 - ball_radius, ball_radius * 8, ball_radius * 8)
+    ball = pygame.Rect(width // 2 - ball_radius, height // 2 - ball_radius, ball_radius * 2, ball_radius * 2)
     player = pygame.Rect(width - 20 - paddle_width, height // 2 - paddle_height // 2, paddle_width, paddle_height)
     opponent = pygame.Rect(20, height // 2 - paddle_height // 2, paddle_width, paddle_height)
 

@@ -116,5 +116,5 @@
 #     print("Der Reifendruck ist zu gering")
 # elif reifen_druck <= 2.00:
 #     print("Der Reifendruck ist richtig")
-# else:
+# hjlse:
 #     print("Der Reifendruck ist zu hoch")

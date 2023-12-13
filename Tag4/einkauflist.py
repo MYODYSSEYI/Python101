@@ -55,6 +55,5 @@ formatedList = '\n'.join(listEinkauf)
 
 with open('einkaufsliste.txt', 'w') as file:
     file.write(formatedList)
-    # Add more print statements or write other output to the file as needed
 
 

@@ -19,7 +19,10 @@ Name = input("Please enter your name if you wish to start this Adventure.\n> ")
 
 print() # Move to next line
 
-text = f"This is the story of a Warrior named {Name} many ."
+text = f"""
+This is the story of a Warrior named {Name} not much is known about him, since he was not born into this world by usual means.
+He who died long before our mysterious adventure unfolds was reborn into this world 
+"""
 
 for char in text:
     print(char, end='', flush=True)

@@ -1,4 +1,5 @@
-from replit import clear
+import os
+
 from art import logo
 
 def add(n1, n2):
@@ -34,13 +35,16 @@ def calculator():
     calculation_function = operations[operation_symbol]
     answer = calculation_function(num1, num2)
     print(f"{num1} {operation_symbol} {num2} = {answer}")
-
-    if input(f"Type 'y' to continue calculating with {answer}, or type 'n' to start a new calculation: ") == 'y':
+    want_continue = input(f"Type 'y' to continue calculating with {answer}, or type 'r' to start a new calculation and if you don't want to continue type 'n': ").lower()
+    if want_continue == 'y':
       num1 = answer
+    elif want_continue == 'r':
+      should_continue = False
+      os.system("cls" if os.name == "nt" else "clear")
+      calculator()
     else:
       should_continue = False
-      clear()
-      calculator()
+      os.system("cls" if os.name == "nt" else "clear")
 
 calculator()
 

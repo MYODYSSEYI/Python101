@@ -62,22 +62,27 @@ Wizard      [W]
 Knight      [K]
 Thief       [T]
 Assassin    [A]
+Range       [R]
 
 """)
 
 ## Startequipment 
 if playerClass == 'W':
-    choice = input('choose your starting weapon [s] staff [b] for book')
+    choice = input('choose your starting weapon [s] for staff [b] for book')
     if choice == 's':
         playerEquiptment = 'staff'
     elif choice == 'b':
         playerEquiptment = 'book'
-# elif playerClass == 'K':
-#
-# elif playerClass == 'T':
-#
-# elif playerClass == 'A':
-#
+elif playerClass == 'K':
+    choice = input('choose your starting weapon [s] shortsword [z] for zweihänder')
+    if choice == 's':
+        playerEquiptment = 'shortsword'
+    elif choice == 'z':
+        playerEquiptment = 'zweihaender'
+elif playerClass == 'T':
+
+elif playerClass == 'A':
+
 
 
 ## Gravegift

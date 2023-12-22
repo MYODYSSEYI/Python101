@@ -74,19 +74,48 @@ if playerClass == 'W':
     elif choice == 'b':
         playerEquiptment = 'book'
 elif playerClass == 'K':
-    choice = input('choose your starting weapon [s] shortsword [z] for zweihänder')
+    choice = input('choose your starting weapon [s] for sword [m] for morningstar')
     if choice == 's':
-        playerEquiptment = 'shortsword'
-    elif choice == 'z':
-        playerEquiptment = 'zweihaender'
+        playerEquiptment = 'sword'
+    elif choice == 'm':
+        playerEquiptment = 'morningstar'
 elif playerClass == 'T':
-
+    choice = input('choose your starting weapon [f] for falchion [d] for dagger')
+    if choice == 'f':
+        playerEquiptment = 'falchion'
+    elif choice == 'd':
+        playerEquiptment = 'dagger'
 elif playerClass == 'A':
+    choice = input('choose your starting weapon [r] for rapier [c] for crossbow')
+    if choice == 'r':
+        playerEquiptment = 'rapier'
+    elif choice == 'c':
+        playerEquiptment = 'crossbow'
+elif playerClass == 'R':
+    choice = input('choose your starting weapon [r] for recursive bow [l] for longbow')
+    if choice == 'r':
+        playerEquiptment = 'recursiveBow'
+    elif choice == 'l':
+        playerEquiptment = 'longbow'
 
 
 
 ## Gravegift
-gravegift = 'potion'
+choice = input("""
+What have your long gone relatives left you for your afterlife?
+
+mystery potion      [?]
+bag of gold         [$]
+good luck charm     [*]
+
+""")
+
+if choice == '?':
+    gravegift = 'mysteryPotion'
+elif choice == '$':
+    gravegift = 'bagOfGold'
+elif choice == '*':
+    gravegift = 'goodLuckCharm'
 
 ## Name
 playerName = input("Please enter your name if you wish to start this Adventure.\n> ")
@@ -98,14 +127,15 @@ This is the story of a Warrior named {playerName} not much is known about him, s
 He who died long before our mysterious adventure unfolds was sent back into this cruel world by the protective spirits of this world.
 """
 
-# for char in text:
-#     print(char, end='', flush=True)
-#     time.sleep(0.05)  # Adjust the sleep duration (in seconds) for your preferred speed
+for char in text:
+    print(char, end='', flush=True)
+    time.sleep(0.03)  # Adjust the sleep duration (in seconds) for your preferred speed
 
 print()  # Move to the next line after printing
 
 ## Safe player data 
 playerData={}
+playerData['playerName'] = playerName
 playerData['playerClass'] = playerClass
 playerData['playerEquiptment'] = [playerEquiptment, gravegift]
 

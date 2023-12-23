@@ -1,6 +1,8 @@
 
 import time
 import runpy
+import json
+
 
 print('''
 
@@ -63,36 +65,35 @@ Knight      [K]
 Thief       [T]
 Assassin    [A]
 Range       [R]
-
-""")
+>""")
 
 ## Startequipment 
 if playerClass == 'W':
-    choice = input('choose your starting weapon [s] for staff [b] for book')
+    choice = input('choose your starting weapon [s] for staff [b] for book\n>')
     if choice == 's':
         playerEquiptment = 'staff'
     elif choice == 'b':
         playerEquiptment = 'book'
 elif playerClass == 'K':
-    choice = input('choose your starting weapon [s] for sword [m] for morningstar')
+    choice = input('choose your starting weapon [s] for sword [m] for morningstar\n>')
     if choice == 's':
         playerEquiptment = 'sword'
     elif choice == 'm':
         playerEquiptment = 'morningstar'
 elif playerClass == 'T':
-    choice = input('choose your starting weapon [f] for falchion [d] for dagger')
+    choice = input('choose your starting weapon [f] for falchion [d] for dagger\n>')
     if choice == 'f':
         playerEquiptment = 'falchion'
     elif choice == 'd':
         playerEquiptment = 'dagger'
 elif playerClass == 'A':
-    choice = input('choose your starting weapon [r] for rapier [c] for crossbow')
+    choice = input('choose your starting weapon [r] for rapier [c] for crossbow\n>')
     if choice == 'r':
         playerEquiptment = 'rapier'
     elif choice == 'c':
         playerEquiptment = 'crossbow'
 elif playerClass == 'R':
-    choice = input('choose your starting weapon [r] for recursive bow [l] for longbow')
+    choice = input('choose your starting weapon [r] for recursive bow [l] for longbow\n>')
     if choice == 'r':
         playerEquiptment = 'recursiveBow'
     elif choice == 'l':
@@ -107,8 +108,7 @@ What have your long gone relatives left you for your afterlife?
 mystery potion      [?]
 bag of gold         [$]
 good luck charm     [*]
-
-""")
+>""")
 
 if choice == '?':
     gravegift = 'mysteryPotion'
@@ -117,6 +117,7 @@ elif choice == '$':
 elif choice == '*':
     gravegift = 'goodLuckCharm'
 
+print()
 ## Name
 playerName = input("Please enter your name if you wish to start this Adventure.\n> ")
 
@@ -139,11 +140,14 @@ playerData['playerName'] = playerName
 playerData['playerClass'] = playerClass
 playerData['playerEquiptment'] = [playerEquiptment, gravegift]
 
+with open("playerData.txt", "w") as file:
+    json.dump(playerData, file)
+
 print(playerData)
 
 ## Go to next part of story 
-# if playerClass == 'W':
-#     runpy.run_path('Wizard.py')
+if playerClass == 'W':
+    runpy.run_path('Wizard.py')
 # elif playerClass == 'K':
 #     runpy.run_path('Knight.py')
 # elif playerClass == 'T':

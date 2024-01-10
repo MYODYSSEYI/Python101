@@ -4,10 +4,6 @@ import os
 import tkinter.filedialog as filedialog
 import random
 
-"""
-FRAME 4 NEEDS A WHOLE LOT OF STUFF FIXED SAVING AND CHANGING ITEMS FROM DICTIONARY DOESNT WORK!!!!
-"""
-
 
 # window management
 def show_frame(frame):
@@ -197,7 +193,9 @@ for file in cardpack_files:
     )
     select_button.pack()
 
-
+#! The code runs in an infinite loop we need to fix this...
+#! The window is ugly and the answer button doesn't disapear when you click it and hides the question...
+#! Background image doesn't work
 # Review Frame
 frame4 = tk.Frame(window)
 

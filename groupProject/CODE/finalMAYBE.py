@@ -311,15 +311,20 @@ def rank_difficulty(difficulty):
 
     # Move the question and answer to the selected difficulty key
     updated_data_dict["difficulty"][difficulty][question] = answer
+    print(updated_data_dict)
     # Remove the question and answer from the dictionary
     if question in data_dict["difficulty"]["new"]:
         del data_dict["difficulty"]["new"][question]
+        data_dict.update(updated_data_dict)
     elif question in data_dict["difficulty"]["hard"]:
         del data_dict["difficulty"]["hard"][question]
+        data_dict.update(updated_data_dict)
     elif question in data_dict["difficulty"]["mid"]:
         del data_dict["difficulty"]["mid"][question]
+        data_dict.update(updated_data_dict)
     elif question in data_dict["difficulty"]["ez"]:
         del data_dict["difficulty"]["ez"][question]
+        data_dict.update(updated_data_dict)
 
     # Clear the frame
     for widget in frame4.winfo_children():

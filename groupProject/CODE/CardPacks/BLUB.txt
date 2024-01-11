@@ -1,4 +1,1 @@
 new:This is a Question:This is a Answer
-new:hehehe :hahahaah
-new:SUCK THIS :SUCK THAT 
-new:123 :abc

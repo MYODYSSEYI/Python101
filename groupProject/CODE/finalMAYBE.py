@@ -210,9 +210,6 @@ for file in cardpack_files:
     )
     select_button.pack()
 
-#! The code runs in an infinite loop we need to fix this...
-#! The window is ugly and the answer button doesn't disapear when you click it and hides the question...
-#! Background image doesn't work
 # Review Frame
 frame4 = tk.Frame(window)
 

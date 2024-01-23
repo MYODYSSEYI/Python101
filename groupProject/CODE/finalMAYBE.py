@@ -1,8 +1,16 @@
 import tkinter.font as tkfont
 import tkinter as tk
-import os
 import tkinter.filedialog as filedialog
 import random
+import os
+import sys
+
+
+def restart_program():
+    """Restarts the current program, with file objects and descriptors
+    cleanup performed by Python's garbage collector.
+    """
+    os.execv(sys.executable, ["python"] + sys.argv)
 
 
 # window management
@@ -57,6 +65,16 @@ data_dict = {
     },
 }
 
+# Create a dictionary to update the data_dict
+updated_data_dict = {
+    "difficulty": {
+        "new": {},
+        "hard": {},
+        "mid": {},
+        "ez": {},
+    },
+}
+
 # Create the main window
 window = tk.Tk()
 window.title("Flash Card App")
@@ -65,7 +83,7 @@ window.geometry("425x320")
 # Menu
 frame1 = tk.Frame(window)
 
-set_background(frame1, "CODE/Images/background.gif")
+# set_background(frame1, "CODE/Images/background.gif")
 
 # Set the system font and configure the title label
 system_font = tkfont.Font(family="System", size=40, weight="bold")
@@ -95,7 +113,7 @@ reviewButton.configure(width=12, height=1)
 # Creation Frame
 frame2 = tk.Frame(window)
 
-set_background(frame2, "CODE/Images/background.gif")
+# set_background(frame2, "CODE/Images/background.gif")
 
 questionLabel = tk.Label(frame2, text="Question:")
 answerLabel = tk.Label(frame2, text="Answer:")
@@ -128,8 +146,7 @@ def save_dictionary():
             for difficulty, questions in data_dict["difficulty"].items():
                 for question, answer in questions.items():
                     f.write(f"{difficulty}:{question}:{answer}\n")
-    show_frame(frame1)
-    hide_frame(frame2)
+    restart_program()
 
 
 saveButton = tk.Button(frame2, text="Save", command=save_dictionary)
@@ -143,7 +160,7 @@ confirmButton.pack(anchor="s")
 
 frame3 = tk.Frame(window)
 
-set_background(frame3, "CODE/Images/background.gif")
+# set_background(frame3, "CODE/Images/background.gif")
 
 
 # Function to get the list of text files in the CardPacks directory
@@ -210,11 +227,14 @@ def write_data_dict_to_file(selected_file):
 
 
 def display_random_question():
-    set_background(frame4, "CODE/Images/background.gif")
+    # set_background(frame4, "CODE/Images/background.gif")
     if data_dict["difficulty"]["new"] != {}:
         # Get a random question from the dictionary
         question = random.choice(list(data_dict["difficulty"]["new"].keys()))
         answer = data_dict["difficulty"]["new"][question]
+
+        for widget in frame4.winfo_children():
+            widget.destroy()
 
         # Display the question
         question_label = tk.Label(frame4, text=question)
@@ -225,6 +245,16 @@ def display_random_question():
             frame4, text="Show Answer", command=lambda: show_answer(answer)
         )
         answer_button.pack()
+
+        # Function to hide the answer button
+        def hide_answer_button():
+            answer_button.pack_forget()
+
+        # Modify the command of the answer button to hide it when clicked
+        answer_button.configure(
+            command=lambda: [show_answer(answer), hide_answer_button()]
+        )
+
     elif data_dict["difficulty"]["hard"] != {}:
         question = random.choice(list(data_dict["difficulty"]["hard"].keys()))
         answer = data_dict["difficulty"]["hard"][question]
@@ -239,6 +269,15 @@ def display_random_question():
             frame4, text="Show Answer", command=lambda: show_answer(answer)
         )
         answer_button.pack()
+
+        # Function to hide the answer button
+        def hide_answer_button():
+            answer_button.pack_forget()
+
+        # Modify the command of the answer button to hide it when clicked
+        answer_button.configure(
+            command=lambda: [show_answer(answer), hide_answer_button()]
+        )
     elif data_dict["difficulty"]["mid"] != {}:
         question = random.choice(list(data_dict["difficulty"]["mid"].keys()))
         answer = data_dict["difficulty"]["mid"][question]
@@ -253,21 +292,18 @@ def display_random_question():
             frame4, text="Show Answer", command=lambda: show_answer(answer)
         )
         answer_button.pack()
-    # elif data_dict["difficulty"]["ez"] != {}:
-    #     question = random.choice(list(data_dict["difficulty"]["ez"].keys()))
-    #     answer = data_dict["difficulty"]["ez"][question]
 
-    #     for widget in frame4.winfo_children():
-    #         widget.destroy()
+        # Function to hide the answer button
+        def hide_answer_button():
+            answer_button.pack_forget()
 
-    #     question_label = tk.Label(frame4, text=question)
-    #     question_label.pack()
+        # Modify the command of the answer button to hide it when clicked
+        answer_button.configure(
+            command=lambda: [show_answer(answer), hide_answer_button()]
+        )
 
-    #     answer_button = tk.Button(
-    #         frame4, text="Show Answer", command=lambda: show_answer(answer)
-    #     )
-    #     answer_button.pack()
     else:
+        # write_data_dict_to_file(selected_file)
         # Hide frame4 and show frame1
         frame4.pack_forget()
         frame1.pack()
@@ -275,9 +311,6 @@ def display_random_question():
 
 # * =======================================< SHOW THE ASWER AND CHOOSE DIFFICULTY>==================================================
 def show_answer(answer):
-    # Remove answer button
-    frame4.winfo_children()[1].destroy()
-
     # Display the answer
     answer_label = tk.Label(frame4, text=answer)
     answer_label.pack()
@@ -297,52 +330,54 @@ def show_answer(answer):
 def rank_difficulty(difficulty):
     # Get the selected question and answer
     question = frame4.winfo_children()[0].cget("text")
-    answer = frame4.winfo_children()[1].cget("text")
+    answer = frame4.winfo_children()[2].cget("text")
 
-    # Create a dictionary to update the data_dict
-    updated_data_dict = {
-        "difficulty": {
-            "new": {},
-            "hard": {},
-            "mid": {},
-            "ez": {},
-        },
-    }
+    print("\n", "Original\n", data_dict)
+
+    if question in data_dict["difficulty"]["ez"] and difficulty != "ez":
+        del updated_data_dict["difficulty"]["ez"][question]
+    elif question in data_dict["difficulty"]["mid"] and difficulty != "mid":
+        del updated_data_dict["difficulty"]["mid"][question]
+    elif question in data_dict["difficulty"]["hard"] and difficulty != "hard":
+        del updated_data_dict["difficulty"]["hard"][question]
 
     # Move the question and answer to the selected difficulty key
     updated_data_dict["difficulty"][difficulty][question] = answer
-    print(updated_data_dict)
+    print("\n", "Updated\n", updated_data_dict)
+
     # Remove the question and answer from the dictionary
-    if question in data_dict["difficulty"]["new"]:
+    if (
+        question in data_dict["difficulty"]["new"]
+        and question not in updated_data_dict["difficulty"]["new"]
+    ):
         del data_dict["difficulty"]["new"][question]
-        data_dict.update(updated_data_dict)
-    elif question in data_dict["difficulty"]["hard"]:
+        if data_dict["difficulty"]["new"] == {}:
+            data_dict.update(updated_data_dict)
+            write_data_dict_to_file(selected_file)
+    elif (
+        question in data_dict["difficulty"]["hard"]
+        and question not in updated_data_dict["difficulty"]["hard"]
+    ):
         del data_dict["difficulty"]["hard"][question]
-        data_dict.update(updated_data_dict)
-    elif question in data_dict["difficulty"]["mid"]:
+        if data_dict["difficulty"]["hard"] == {}:
+            data_dict.update(updated_data_dict)
+            write_data_dict_to_file(selected_file)
+    elif (
+        question in data_dict["difficulty"]["mid"]
+        and question not in updated_data_dict["difficulty"]["mid"]
+    ):
         del data_dict["difficulty"]["mid"][question]
-        data_dict.update(updated_data_dict)
-    elif question in data_dict["difficulty"]["ez"]:
-        del data_dict["difficulty"]["ez"][question]
-        data_dict.update(updated_data_dict)
-
-    # Clear the frame
-    for widget in frame4.winfo_children():
-        widget.destroy()
-
-    if data_dict["difficulty"]["new"] != {}:
-        display_random_question()
-    elif data_dict["difficulty"]["hard"] != {}:
-        display_random_question()
-    elif data_dict["difficulty"]["mid"] != {}:
-        display_random_question()
+        if data_dict["difficulty"]["mid"] == {}:
+            data_dict.update(updated_data_dict)
+            write_data_dict_to_file(selected_file)
     else:
-        # Update the data_dict with the updated_data_dict
         data_dict.update(updated_data_dict)
-        # Save the data_dict to the file
         write_data_dict_to_file(selected_file)
-        hide_frame(frame4)
-        show_frame(frame1)
+
+    print("\n", "Updated\n", updated_data_dict)
+    print("\n", "Originial\n", data_dict)
+
+    display_random_question()
 
 
 # Show the first frame

@@ -38,23 +38,6 @@ def switch_view1_4():
     display_random_question()
 
 
-def set_background(frame, image_path):
-    # Load the image
-    image = tk.PhotoImage(file=image_path)
-
-    # Downscale the image to a fifth of its size
-    image = image.subsample(4)
-
-    # Create a label with the image
-    background_label = tk.Label(frame, image=image)
-    background_label.image = (
-        image  # Keep a reference to the image to prevent garbage collection
-    )
-
-    # Place the label at the top left corner and make it cover the entire frame
-    background_label.place(x=0, y=0, relwidth=1, relheight=1)
-
-
 # Data management
 data_dict = {
     "difficulty": {
@@ -80,10 +63,8 @@ window = tk.Tk()
 window.title("Flash Card App")
 window.geometry("425x320")
 
-# Menu
+# * =======================================< Menu >=============================================
 frame1 = tk.Frame(window)
-
-# set_background(frame1, "CODE/Images/background.gif")
 
 # Set the system font and configure the title label
 system_font = tkfont.Font(family="System", size=40, weight="bold")
@@ -91,9 +72,6 @@ title_label = tk.Label(window, text="PY-Cards", font=system_font)
 
 # Place the title label at the center of the window
 title_label.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
-
-# ...
-
 
 # Create the buttons
 createButton = tk.Button(frame1, text="Create Cards", command=switch_view1_2)
@@ -110,10 +88,8 @@ createButton.configure(width=12, height=1)
 cardpacksButton.configure(width=12, height=1)
 reviewButton.configure(width=12, height=1)
 
-# Creation Frame
+# * =========================< Creation Frame >=============================================
 frame2 = tk.Frame(window)
-
-# set_background(frame2, "CODE/Images/background.gif")
 
 questionLabel = tk.Label(frame2, text="Question:")
 answerLabel = tk.Label(frame2, text="Answer:")
@@ -127,6 +103,7 @@ answerLabel.pack()
 answerInput.pack()
 
 
+# Saves the input data to the dictionary
 def save_input_data():
     question = questionInput.get()
     answer = answerInput.get()
@@ -135,6 +112,7 @@ def save_input_data():
     answerInput.delete(0, tk.END)
 
 
+# save the dictionary to a file
 def save_dictionary():
     file_path = filedialog.asksaveasfilename(
         initialdir=os.path.join(os.path.dirname(__file__), "CardPacks"),
@@ -149,6 +127,7 @@ def save_dictionary():
     restart_program()
 
 
+# Buttons to save and confirm
 saveButton = tk.Button(frame2, text="Save", command=save_dictionary)
 saveButton.pack(anchor="s")
 
@@ -156,11 +135,8 @@ saveButton.pack(anchor="s")
 confirmButton = tk.Button(frame2, text="Confirm", command=save_input_data)
 confirmButton.pack(anchor="s")
 
-# Card Pack Frame
-
+# * ==========================< Card Pack Frame >=============================================
 frame3 = tk.Frame(window)
-
-# set_background(frame3, "CODE/Images/background.gif")
 
 
 # Function to get the list of text files in the CardPacks directory
@@ -200,6 +176,7 @@ def select_file(file):
     fill_dictionary(file)
 
 
+# Create a label and button for each file
 for file in cardpack_files:
     label = tk.Label(frame3, text=file)
     label.pack()
@@ -223,6 +200,7 @@ def write_data_dict_to_file(selected_file):
                 f.write(f"{difficulty}:{question}:{answer}\n")
 
 
+# Function to display a random question
 def display_random_question():
     # set_background(frame4, "CODE/Images/background.gif")
     if data_dict["difficulty"]["new"] != {}:
@@ -251,7 +229,6 @@ def display_random_question():
         answer_button.configure(
             command=lambda: [show_answer(answer), hide_answer_button()]
         )
-
     elif data_dict["difficulty"]["hard"] != {}:
         question = random.choice(list(data_dict["difficulty"]["hard"].keys()))
         answer = data_dict["difficulty"]["hard"][question]
@@ -298,9 +275,7 @@ def display_random_question():
         answer_button.configure(
             command=lambda: [show_answer(answer), hide_answer_button()]
         )
-
     else:
-        # write_data_dict_to_file(selected_file)
         # Hide frame4 and show frame1
         frame4.pack_forget()
         frame1.pack()

@@ -1,1 +1,1 @@
-mid:hello:welcome
+ez:question:anxswer

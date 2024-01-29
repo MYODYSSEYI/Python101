@@ -16,22 +16,22 @@ while True:
 
 # pre game config
     start = int(input("Pick a number to start from: "))
-    to = int(input("Pick a number to end at: "))
-    if start > to:
+    end = int(input("Pick a number to end at: "))
+    if start > end:
         replace = start
-        start = to
-        to = replace
+        start = end
+        end = replace
 
     tries = 1
-    number = random.randint(start, to)
+    number = random.randint(start, end)
 
 # game
-    guess = int(input(f"Pick a number between {start} and {to}: "))
+    guess = int(input(f"Pick a number between {start} and {end}: "))
     while guess != number:
         os.system("cls" if os.name == "nt" else "clear")
         tries += 1
-        if guess < start or guess > to:
-            print(f"I said between {start} and {to}!")
+        if guess < start or guess > end:
+            print(f"I said between {start} and {end}!")
         elif guess < number:
             print("Too low")
         elif guess > number:
@@ -43,6 +43,7 @@ while True:
     again = input("Would you like to play again? (y/n): ")
 
     if again.lower() != "y":
+        os.system("cls" if os.name == "nt" else "clear")
         break
     else:
         os.system("cls" if os.name == "nt" else "clear")

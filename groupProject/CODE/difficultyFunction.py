@@ -39,33 +39,11 @@ quesion_count = {
 fill_dictionary("test.txt")
 
 
-def new_count():
-    new_questions = Null
-    for key in updated_data_dict["new"]:
-        new_questions += 1
-    return new_questions
-
-
-def hard_count():
-    hard_questions = Null
-    for key in updated_data_dict["hard"]:
-        hard_questions += 1
-    return hard_questions
-
-
-def mid_count():
-    mid_questions = Null
-    for key in updated_data_dict["mid"]:
-        mid_questions += 1
-    return mid_questions
-
-
-def ez_count():
-    ez_questions = Null
-    for key in updated_data_dict["ez"]:
-        ez_questions += 1
-    return ez_questions
-
+def count(diff):
+    questions = Null
+    for key in updated_data_dict[diff]:
+        questions += 1  
+    return questions
 
 def write_data_dict_to_file(selected_file):
     file_path = os.path.join(os.path.dirname(__file__), "CardPacks", selected_file)
@@ -73,6 +51,7 @@ def write_data_dict_to_file(selected_file):
         for difficulty, questions, count in data_dict_1["difficulty"].items():
             for question, answer in questions.items():
                 f.write(f"{difficulty}:{question}:{answer}:{count}\n")
+                
                 
 def fill_dictionary(file):
     file_path = os.path.join(os.path.dirname(__file__), "CardPacks", file)
@@ -82,6 +61,7 @@ def fill_dictionary(file):
             difficulty, question, answer, count = line.strip().split(":")
             data_dict_1["difficulty"][difficulty][question] = [answer, count]
 
+            
 next_question_data_dict()
 
 

@@ -57,6 +57,12 @@ updated_data_dict = {
     },
 }
 
+def questionCount(which):
+    count = 0 
+    for i in which:
+        count += 1 
+    return count
+
 # times_right = {
 #     "new": {
 #         # "question": 0 => inititial value | 1 => if right - put it in mid | -1 => if wrong - put it in hard
@@ -321,20 +327,28 @@ def display_random_question():
 
 # * =======================================< SHOW THE ASWER AND CHOOSE DIFFICULTY>==================================================
 def show_answer(answer):
+    newCount = questionCount(data_dict["difficulty"]["new"])
+    hardCount =questionCount(data_dict["difficulty"]["hard"])
+    midCount = questionCount(data_dict["difficulty"]["mid"])
+    ezCount = questionCount(data_dict["difficulty"]["ez"])
+
     # Display the answer
     answer_label = tk.Label(frame4, text=answer, font=not_titel_font)
     answer_label.pack()
+    
+    newCountLabel = tk.Label(frame4, text=f"New: {newCount}", fon=not_titel_font)
+    newCountLabel.pack()
 
     # Buttons to rank the difficulty
     easy_button = tk.Button(
-        frame4, text="Easy", font=not_titel_font, command=lambda: rank_difficulty("ez")
+        frame4, text=f"Easy: {ezCount}", font=not_titel_font, command=lambda: rank_difficulty("ez")
     )
     mid_button = tk.Button(
-        frame4, text="Mid", font=not_titel_font, command=lambda: rank_difficulty("mid")
+        frame4, text=f"Mid: {midCount}", font=not_titel_font, command=lambda: rank_difficulty("mid")
     )
     hard_button = tk.Button(
         frame4,
-        text="Hard",
+        text=f"Hard: {hardCount}",
         font=not_titel_font,
         command=lambda: rank_difficulty("hard"),
     )

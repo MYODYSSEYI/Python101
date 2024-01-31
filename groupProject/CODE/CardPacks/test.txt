@@ -1,4 +1,2 @@
-ez:what:tf
-ez:hahahah:wahahah
-ez:tut:boot
-ez:bye:hi
+hard:hello :bye
+mid:what :this

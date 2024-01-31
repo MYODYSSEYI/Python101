@@ -369,13 +369,6 @@ def rank_difficulty(difficulty):
     question = frame4.winfo_children()[0].cget("text")
     answer = frame4.winfo_children()[2].cget("text")
 
-    if question in data_dict["difficulty"]["ez"] and difficulty != "ez":
-        del updated_data_dict["difficulty"]["ez"][question]
-    elif question in data_dict["difficulty"]["mid"] and difficulty != "mid":
-        del updated_data_dict["difficulty"]["mid"][question]
-    elif question in data_dict["difficulty"]["hard"] and difficulty != "hard":
-        del updated_data_dict["difficulty"]["hard"][question]
-
     # Move the question and answer to the selected difficulty key
     updated_data_dict["difficulty"][difficulty][question] = answer
 
@@ -407,7 +400,12 @@ def rank_difficulty(difficulty):
     else:
         data_dict.update(updated_data_dict)
         write_data_dict_to_file(selected_file)
-
+    if question in data_dict["difficulty"]["ez"] and difficulty != "ez":
+        del updated_data_dict["difficulty"]["ez"][question]
+    elif question in data_dict["difficulty"]["mid"] and difficulty != "mid":
+        del updated_data_dict["difficulty"]["mid"][question]
+    elif question in data_dict["difficulty"]["hard"] and difficulty != "hard":
+        del updated_data_dict["difficulty"]["hard"][question]
     display_random_question()
 
 

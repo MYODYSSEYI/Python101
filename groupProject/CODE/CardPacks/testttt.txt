@@ -1,1 +1,1 @@
-mid:hello:world
+hard:hello:world

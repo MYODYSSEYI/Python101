@@ -1,2 +1,2 @@
-hard:hello :bye
-mid:what :this
+new:fuck :em
+new:thats it :man

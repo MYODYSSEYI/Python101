@@ -336,8 +336,9 @@ def show_answer(answer):
     answer_label = tk.Label(frame4, text=answer, font=not_titel_font)
     answer_label.pack()
     
-    newCountLabel = tk.Label(frame4, text=f"New: {newCount}", fon=not_titel_font)
-    newCountLabel.pack()
+    if newCount != 0: 
+        newCountLabel = tk.Label(frame4, text=f"New: {newCount}", fon=not_titel_font)
+        newCountLabel.pack()
 
     # Buttons to rank the difficulty
     easy_button = tk.Button(

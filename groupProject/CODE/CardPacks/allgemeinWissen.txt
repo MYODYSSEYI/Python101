@@ -1,0 +1,10 @@
+new:What is the capital of France?:Paris
+new:Who is the author of Hamlet?:William Shakespeare
+new:What is the square root of 25?:5
+new:What is the largest planet in our solar system?:Jupiter
+new:In which year did the Titanic sink?:1912
+new:Who painted the Mona Lisa?:Leonardo da Vinci
+new:What is the chemical symbol for water?:H2O
+new:What is the currency of Japan?:Japanese Yen
+new:What is the capital of Australia?:Canberra
+new:Who wrote "To Kill a Mockingbird"?:Harper Lee

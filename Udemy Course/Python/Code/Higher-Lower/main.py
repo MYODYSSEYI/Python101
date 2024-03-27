@@ -1,52 +1,77 @@
-import art
-import game_data
-import os
 import random
 
-score = 0
+from os import system
 
-while True:
-    print(f'''
-    {art.logo}
-    Guess higher or lower follower count from celebritys!
-    ''')
+from art import logo, vs
+from game_data import data
 
-    celebrity_a = random.randint(0, len(game_data.data)-1)
-    celebrity_b = random.randint(0, len(game_data.data)-1)
+def wholeGame():
+  def get_random_account():
+    """Get data from random account"""
+    return random.choice(data)
 
-    if celebrity_a == celebrity_b:
-        celebrity_b = random.randint(range(0, len(game_data.data)-1))
+  def format_data(account):
+    """Format account into printable format: name, description and country"""
+    name = account["name"]
+    description = account["description"]
+    country = account["country"]
+    # print(f'{name}: {account["follower_count"]}')
+    return f"{name}, a {description}, from {country}"
 
-    print(f"Your current score is: {score}")
-
-    guess = input(f'''
-    A: {game_data.data[celebrity_a]['name']}
-          {art.vs}
-    B: {game_data.data[celebrity_b]['name']}
-    ''').lower()
-    
-    if guess.lower() == 'a':
-        if game_data.data[celebrity_a]['follower_count'] > game_data.data[celebrity_b]['follower_count']:
-            print('You win!')
-            score += 1
-        else:
-            print('You lose!')
-            break
-    elif guess.lower() == 'b':
-        if game_data.data[celebrity_b]['follower_count'] > game_data.data[celebrity_a]['follower_count']:
-            print('You win!')
-            score += 1
-        else:
-            print('You lose!')
-            break 
+  def check_answer(guess, a_followers, b_followers):
+    """Checks followers against user's guess 
+    and returns True if they got it right.
+    Or False if they got it wrong.""" 
+    if a_followers > b_followers:
+      return guess == "a"
     else:
-        print('Wrong input!')
-        input = input('another round? (y/n)').lower()
-        if input == 'y':
-            os.system('clear')
-        else:
-            break
+      return guess == "b"
 
+
+  def game():
+    print(logo)
+    score = 0
+    game_should_continue = True
+    account_a = get_random_account()
+    account_b = get_random_account()
+
+    while game_should_continue:
+      account_a = account_b
+      account_b = get_random_account()
+
+      while account_a == account_b:
+        account_b = get_random_account()
+  
+      print(f"Compare A: {format_data(account_a)}.")
+      print(vs)
+      print(f"Against B: {format_data(account_b)}.")
     
+      guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+      a_follower_count = account_a["follower_count"]
+      b_follower_count = account_b["follower_count"]
+      is_correct = check_answer(guess, a_follower_count, b_follower_count)
 
- 
+      system('clear')
+      print(logo)
+      if is_correct:
+        score += 1
+        print(f"You're right! Current score: {score}.")
+      else:
+        game_should_continue = False
+        print(f"Sorry, that's wrong. Final score: {score}")
+        anotherGame()
+  
+  game()
+
+
+def anotherGame():
+  goon = input("""
+  Another game?
+  Press 'Y' to play again, or any other key to quit: 
+  """).lower()
+  if goon == "y":
+    wholeGame()
+  else:
+    exit() 
+        
+wholeGame()
